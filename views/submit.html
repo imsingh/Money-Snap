@@ -1,0 +1,29 @@
+<div class="panel" ng-if="submissions < contest.entriesPerPerson && currentUser.credits >= contest.entranceFee">
+
+	<div ng-if="justPaid" class="justPaid">
+		Payment Successful! Submit your entry below
+	</div>
+  
+  <h1 class="creationHeader"><small>Submit a Photo</small><br> {{contest.title}}</h1>
+
+
+<form>
+  <editentry></editentry>
+
+
+  <div class="warning label" ng-show="!entry.imageID">Your photo must be fully uploaded before you can submit</div><br>
+  <button class="button success large" ng-click="submitEntry(entry);" ng-disabled="!entry.imageID">Submit Entry</button>
+</form>
+
+
+
+</div>
+
+<div class="panel entranceFee" ng-if="currentUser.credits < contest.entranceFee || !currentUser.credits">
+	<h1 class="creationHeader">{{contest.title}}</h1>
+	<br>
+
+	<stripe ng-init="awardAmount = contest.entranceFee"></stripe><br>
+
+	<h4 class="subHeader">Entrance Fee: {{contest.entranceFee | currency}}</h4>
+</div>

@@ -1,0 +1,39 @@
+<div class="panel">
+	<b class="panelTitle">Invite To Contest</b>
+
+	<b>Users I'm Following</b>
+	<div class="userPreviews">
+		<input type="text" ng-model="filter" placeholder="search">
+		<div ng-repeat="follow in follows | filter:{follower:currentUser.userID}">
+			<div class="userPreview" ng-repeat="user in users | filter:{userID:follow.following} | filter:filter">
+				<div class="userPreviewImage" ng-click="go('profile.userID', {userID:user.userID})">
+					<img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_scale,h_118,w_118/{{user.imageID || 'noProfile_njhxg2.jpg'}}">
+				</div>
+				<div class="userPreviewName" ng-click="go('profile.userID', {userID:user.userID})">
+					{{user.name}}
+				</div>
+				<div class="userPreviewInvite">
+					<span ng-repeat="notification in notifications | filter:{contestID:contest.$id, targetUser:user.userID} | unique:'targetUser'">
+						<i class="fa fa-check"></i> Invited 
+					</span>
+						<a class="button success" ng-click="invite(user.userID, contest.$id)">Invite</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br><br>
+
+	<b>All Users</b>
+	<div class="userPreviews">
+		<input type="text" ng-model="filter" placeholder="search">
+		<div class="userPreview" ng-click="go('profile.userID', {userID:user.userID})" ng-repeat="user in users | filter:filter">
+			<div class="userPreviewImage">
+				<img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_scale,h_118,w_118/{{user.imageID || 'noProfile_njhxg2.jpg'}}">
+			</div>
+			<div class="userPreviewName">
+				{{user.name}}
+			</div>
+		</div>
+	</div>
+</div>

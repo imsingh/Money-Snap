@@ -1,0 +1,39 @@
+<div class="panel">
+	<b class="panelTitle">Reports</b>
+
+	<select ng-model="reportFilter" ng-init="reportFilter=''">
+		<option value="">All</option>
+		<option value="submissionPhase">Submission Phase</option>
+		<option value="votingPhase">Voting Phase</option>
+		<option value="finishedContests">Finished Contests</option>
+	</select>
+
+	<!-- ALL -->
+	<div ng-if="!reportFilter || reportFilter == ''">
+		<div class="contestReports" ng-repeat="contest in contests">
+			<contestreport></contestreport>
+		</div>
+	</div>
+
+	<!-- SUBMISSION PHASE -->
+	<div ng-if="reportFilter == 'submissionPhase'">
+		<div class="contestReports" ng-repeat="contest in contests | filter:{submissionsOver:false, votingOver:false}">
+			<contestreport></contestreport>
+		</div>
+	</div>
+
+	<!-- VOTING PHASE -->
+	<div ng-if="reportFilter == 'votingPhase'">
+		<div class="contestReports" ng-repeat="contest in contests | filter:{submissionsOver:true, votingOver: false}">
+			<contestreport></contestreport>
+		</div>
+	</div>
+
+	<!-- FINISHED -->
+	<div ng-if="reportFilter == 'finishedContests'">
+		<div class="contestReports" ng-repeat="contest in contests | filter:{submissionsOver:true, votingOver: true}">
+			<contestreport></contestreport>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,45 @@
+<div class="contestReport" ng-init="setContestPhase(contest)" ng-if="contest.title && contest.imageID">
+	<div class="contestReportImage">
+		<img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_fill,h_90,w_150/{{contest.imageID || 'no-image-featured-image_rdviix'}}.jpg">
+	</div>
+	<div class="contestReportDetails">
+
+		<!-- TITLE -->
+		<a href="#contest/{{contest.$id}}" class="contestReportTitle">
+			{{contest.title}}
+		</a>
+
+		<!-- AWARDS -->
+		<div class="contestReportAward" ng-repeat="prize in prizes | filter:{contestID:contest.$id} | limitTo: 1" ng-if="contest.contestType != 'Contest Members Only'">
+		  <b><i class="fa fa-trophy"></i> {{prize.amount | currency}}</b> <small>{{prize.label}}</small>
+		</div>
+		<div class="contestReportAward" ng-if="contest.contestType == 'Contest Members Only'">
+		  <b><i class="fa fa-trophy"></i> <b>{{contest.potSize * 0.90 || 0 | currency}}</b></b>
+		</div>
+
+		<!-- CURRENT PHASE -->
+		<div class="phase">
+			<div ng-show="!contest.votingOver && !contest.submissionsOver">
+				<b>Accepting Submissions!</b> &middot; ends: {{contest.submissionDeadline}}
+			</div>
+			<div ng-show="contest.submissionsOver && !contest.votingOver">
+				<b>Accepting Votes</b> &middot;  ends: {{contest.votingDeadline}}
+			</div>
+			<div ng-show="contest.votingOver && contest.submissionsOver">
+				Contest Ended, Award Winners
+			</div>
+		</div>
+
+		<!-- JUDGES -->
+		<div class="contestReportJudge" ng-if="contest.contestType == 'Specific Judge'">
+		  <small>JUDGE</small> <b>{{contest.judgeName}}</b> <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_thumb,g_custom:face,h_20,w_20/{{contest.judgeImageID}}.jpg" class="judgeImagePreview">
+		</div>
+		<div class="contestReportJudge" ng-if="contest.contestType == 'Contest Members Only'">
+		  <small>JUDGED BY CONTEST PARTICIPANTS</small>
+		</div>
+
+		<!-- CTA -->
+		<a href="#contest/{{contest.$id}}" class="button secondary tiny">View</a>
+
+	</div>
+</div>

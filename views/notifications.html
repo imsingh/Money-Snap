@@ -1,0 +1,40 @@
+<div class="panel">
+
+	<b class="panelHeader">Notifications</b>
+
+  <a class="button expanded secondary" ng-click="markAllNotificationsAsRead()">Mark All As Read</a>
+  
+  <div class="notification" ng-repeat="notification in notifications | orderBy:'-' | filter:{targetUser:currentUser.userID,sourceUser:'!'+currentUser.userID}" ng-class="{'read':notification.read}">
+    <div class="notificationImage" ng-repeat="user in users | filter:{userID:notification.sourceUser}">
+      <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_scale,h_40,w_40/{{user.imageID || 'noProfile_njhxg2.jpg'}}">
+    </div>
+    <div class="notificationDetails">
+      <b ng-repeat="user in users | filter:{userID:notification.sourceUser}" ng-click="go('profile.userID', {userID:user.userID}); markRead(notification);">{{user.name}}</b> 
+      	<span ng-show="notification.action == 'Liked'">
+      		liked your entry in
+      	</span>
+      	<span ng-show="notification.action == 'Voted'">
+      		voted for your entry in
+      	</span>
+      	<span ng-show="notification.action == 'Followed'">
+      		started following you
+      	</span>
+        <span ng-show="notification.action == 'Entered'">
+          has submitted an entry into your contest 
+        </span>
+        <span ng-show="notification.action == 'Invited'">
+         invited you to join the contest
+        </span>
+        <span ng-show="notification.action == 'Awarded'">
+         has given you a prize in
+        </span>
+      <span ng-if="notification.contestID">
+	      <b ng-repeat="contest in contests | filter:{$id:notification.contestID}" ng-click="go('contest.contestID', {contestID:contest.$id});  markRead(notification);">{{contest.title}}</b>
+	       <small ng-if="notification.entryID ">
+          &middot; 
+	      <b ng-repeat="entry in entries | filter:{$id:notification.entryID} | unique:'entryID'" ng-click="go('photo.entryID', {entryID:entry.$id});  markRead(notification);">View</b></small>
+	  </span>
+    </div>
+  </div>
+
+</div>

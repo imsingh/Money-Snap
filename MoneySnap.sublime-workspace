@@ -1,0 +1,720 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"submissionDeadline",
+				"submissionDeadlineCounter"
+			],
+			[
+				"notifications",
+				"notificationsRef"
+			],
+			[
+				"voting",
+				"votingDeadlineCounter"
+			],
+			[
+				"submissionDea",
+				"submissionDeadlineCounter"
+			],
+			[
+				"ea",
+				"EAEFF2"
+			],
+			[
+				"profile",
+				"profileMiniDisplay"
+			],
+			[
+				"yesClick",
+				"yesClickActive"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 6058,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"geti",
+				"Snippet: getWordpressTemplateURI"
+			],
+			[
+				"html",
+				"Snippet: StartingHTML5"
+			],
+			[
+				"html5",
+				"Snippet: StartingHTML5"
+			],
+			[
+				"jquery",
+				"Snippet: jqueryFunction"
+			],
+			[
+				"start",
+				"Snippet: StartingHTML5"
+			],
+			[
+				"get",
+				"Snippet: getWordpressTemplateURI"
+			],
+			[
+				"wordpre",
+				"Snippet: getWordpressTemplateURI"
+			],
+			[
+				"package",
+				"Preferences: Browse Packages"
+			],
+			[
+				"getwor",
+				"Snippet: getWordpressTemplateURI"
+			],
+			[
+				"link",
+				"Snippet: linkStylesheet"
+			],
+			[
+				"con",
+				"Snippet: consoleDebug"
+			],
+			[
+				" con",
+				"Snippet: consoleDebug"
+			],
+			[
+				"consol",
+				"Snippet: consoleDebug"
+			],
+			[
+				"document",
+				"Snippet: documentOnClick"
+			],
+			[
+				"documen",
+				"Snippet: documentOnClick"
+			],
+			[
+				"docum",
+				"Snippet: documentOnClick"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/6D140BC6_edit.tmp/app.css",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/A7C58BD3.tmp/charge.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/AB897B4C_edit.tmp/app.js",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/directives/stripebutton.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/B1CD1669_edit.tmp/index.html",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/directives/contestreport.html",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/directives/contestevent.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/970B087F_edit.tmp/style.css",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/DD3152F4_edit.tmp/index.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/0B08CAC8_edit.tmp/messenger.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/36EFAFFA_edit.tmp/messenger.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/36EFAFFA_edit.tmp/findcontractor.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/0B08CAC8_edit.tmp/profile.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/0B08CAC8_edit.tmp/findcontractor.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/0B08CAC8_edit.tmp/editjob.html",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/index.html",
+		"/D/Cloud/Work/Innovation Steel/App/views/estimates.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/05F075EB_edit.tmp/single-product.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/818B5804_edit.tmp/style.css",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/05F075EB_edit.tmp/sidebar.php",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/views/contest.html",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/views/edit-entry.html",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/js/countdown.js",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/views/photo.html",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/views/findusers.html",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/views/profile.html",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/views/notifications.html",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/views/login.html",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/views/home.html",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/css/app.css",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/C9C523CD_edit.tmp/profile.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/A11F427E_edit.tmp/app.js",
+		"/D/Cloud/Work/MoneySnap/Firebase Version/js/scripts.js",
+		"/D/Cloud/Work/Innovation Steel/App/views/home.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/566144BD_edit.tmp/scripts.js",
+		"/D/Cloud/Work/MoneySnap/Interface/views/create-contest.html",
+		"/D/Cloud/Work/Innovation Steel/App/js/states.js",
+		"/D/Cloud/Work/Backand Training/scripts.js",
+		"/D/Cloud/Work/Backand Training/Simple Get/index.html",
+		"/D/Cloud/Work/Backand Training/index.html",
+		"/D/Desk/Folders/New folder (4)/index.html",
+		"/D/Cloud/Work/MoneySnap/Interface/js/scripts.js",
+		"/D/Cloud/Work/MoneySnap/Interface/js/app.js",
+		"/D/Cloud/Work/MoneySnap/Interface/css/app.css",
+		"/D/Cloud/Work/MoneySnap/Interface/js/select.js",
+		"/D/Cloud/Work/Innovation Steel/App/js/scripts.js",
+		"/D/Cloud/Work/MoneySnap/Interface/index.html",
+		"/D/Cloud/Work/Innovation Steel/App/directives/itemtable.html",
+		"/D/Cloud/Work/Innovation Steel/App/views/edit.html",
+		"/D/Cloud/Work/Innovation Steel/App/css/app.css",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/47900E9C_edit.tmp/style.css",
+		"/D/Cloud/Work/Innovation Steel/App/index.html",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/scripts.js",
+		"/D/Cloud/Work/MoneyShot/Interface/js/directives.js",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/99504829_edit.tmp/home.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/8BF371C4_edit.tmp/scripts.js",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/EA98AB00_edit.tmp/style.css",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/D116B760_edit.tmp/cart.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/37A8C6E5_edit.tmp/cart.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/8B749D1E.tmp/cart.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/1EE2D110_edit.tmp/style.css",
+		"/D/Cloud/Work/RaceMe/demo/index.html",
+		"/D/Cloud/Work/Innovation Steel/App/js/app.js",
+		"/D/Cloud/Work/RaceMe/Prototype/js/app.js",
+		"/D/Cloud/Work/Innovation Steel/App/views/daily-log.html",
+		"/D/Cloud/Work/Innovation Steel/App/views/logs.html",
+		"/D/Cloud/Work/Innovation Steel/App/directives/entry.html",
+		"/D/Desk/test.json",
+		"/D/Cloud/Work/Innovation Steel/App/js/directives.js",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/6C57313D_edit.tmp/directives.js",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/114DAE52_edit.tmp/style.css",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/114DAE52_edit.tmp/scripts.js",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/114DAE52_edit.tmp/index.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/9AE612EB_edit.tmp/simple.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/041DE737_edit.tmp/tabs.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/114DAE52_edit.tmp/single-product.php",
+		"/D/Cloud/Work/Rustica/BarnDoorsHardware.com/v4/style.css",
+		"/D/Cloud/Work/Rustica/BarnDoorsHardware.com/v4/css/app.css",
+		"/D/Cloud/Work/Innovation Steel/App/views/add.html",
+		"/D/Cloud/Work/Innovation Steel/App/addItems.html",
+		"/D/Cloud/Work/Innovation Steel/App/singleEstimate.html",
+		"/D/Cloud/Work/Innovation Steel/App/newEstimate.html",
+		"/D/Cloud/Work/Innovation Steel/App/style.css",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/71AC9412_edit.tmp/countertopsnew.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/150ECD2B_edit.tmp/header.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/150ECD2B_edit.tmp/style.css",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/150ECD2B_edit.tmp/home.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/150ECD2B_edit.tmp/footer.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/05131177_edit.tmp/scripts.js",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/067A3368_edit.tmp/audioTemplate.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/067A3368_edit.tmp/coursesTeaching.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/067A3368_edit.tmp/browseCourses.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/067A3368_edit.tmp/createCourse.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/9CAE6EAB_edit.tmp/states.js",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/9CAE6EAB_edit.tmp/scripts.js",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/067A3368_edit.tmp/viewCourse.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/067A3368_edit.tmp/viewBlockContent.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/067A3368_edit.tmp/attachmentTemplate.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/9CAE6EAB_edit.tmp/app.js",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/067A3368_edit.tmp/quizTemplate.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/9CAE6EAB_edit.tmp/index.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/067A3368_edit.tmp/courseGridItem.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/9CAE6EAB_edit.tmp/style.css",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/067A3368_edit.tmp/editor.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/9CAE6EAB_edit.tmp/directives.js",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/067A3368.tmp/coursebanner.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/067A3368_edit.tmp/courseimage.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/0CFEBF4E_edit.tmp/functions.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/445A0E50_edit.tmp/attachmentTemplate.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/FB4F0615_edit.tmp/edit-attachment.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/6D773735_edit.tmp/upload.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/C2732514_edit.tmp/upload.php",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/59BD6A85_edit.tmp/findcontractor.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/77DBA003_edit.tmp/jobdetails.html",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/views/moduleeditor.html",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/views/textTemplate.html",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/index.html",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/views/courseDashboard.html",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/views/coursesTeaching.html",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/views/createCourse.html",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/views/sectioneditor.html",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/views/videoTemplate.html",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/views/edit-audio.html",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/style.css",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/views/edit-course.html",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/views/pushCourse.html",
+		"/C/Users/Jordan/AppData/Local/Temp/~flashfxp/2DD2A730_edit.tmp/app.js",
+		"/D/Cloud/Work/BuildsOn.com/InterfaceHTML/views/push-course.html"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"terms",
+			"forgotPassword",
+			"$scope.forgotPassword",
+			"$scope.",
+			"console.log(",
+			"passwordError",
+			"animations",
+			"contestreport",
+			"div",
+			"August",
+			"April",
+			"home",
+			"Featured",
+			"Finished",
+			"Voting",
+			"Accepting Submissions",
+			"$scope.currentuser = ",
+			"group2",
+			".group2.",
+			"slab.",
+			"lap",
+			"Lap",
+			"lap",
+			"Lap",
+			"lap",
+			"lap.",
+			"spacing",
+			"console.log",
+			".group2",
+			"8x90STD",
+			"$scope.slab",
+			"$scope.lap.",
+			"$scope.lap",
+			"lap",
+			"calculateLapDiameter(slab)",
+			"calculateLapLength(slab)",
+			"slab",
+			"slabGroup2.",
+			"$scope.lap.",
+			"lap.",
+			"Rows To Add",
+			"2Way",
+			"quick add",
+			"		\n",
+			"setItemCalculationAssistant",
+			"console.log",
+			"userObject.",
+			"userObject =",
+			"$scope.userObject =",
+			"$scope.userObject=",
+			"$scope.userObject =",
+			"$scope.userObject = ",
+			"user.",
+			"$scope.user =",
+			"adder==",
+			"small-3 columns",
+			"small-4 columns",
+			"<div class=\"small-1 columns\">",
+			"$scope.item.groupID =",
+			"editGrid",
+			"</div>\n		</div>",
+			"	<div class=\"small-3 columns\">",
+			"</div>\n\n<div class=\"row\">",
+			"<div class=\"small-4 columns\">",
+			"</div>\n	</div>",
+			"<div class=\"small-1 columns\">",
+			"<div class=\"row\">\n	<div class=\"small-1 columns\">",
+			"entryID",
+			"votes",
+			"likes",
+			"like",
+			"$state.params.entryid",
+			"userID",
+			"followers",
+			"follow",
+			"1",
+			"span",
+			"following",
+			"contestID",
+			"invite",
+			"118",
+			"more",
+			"5s",
+			"[ui-view]",
+			"reports",
+			"back",
+			"key()",
+			".val()",
+			"vote",
+			"all entries",
+			"$scope.contest.en",
+			"prizes",
+			"contestsRef.on",
+			"console.log",
+			"My Votes",
+			"Votes",
+			"slab.",
+			".size",
+			"0Degree",
+			".stocklength",
+			".length",
+			"lap.",
+			"lapfields",
+			"quick add",
+			"item",
+			"parseFloat",
+			"item",
+			"multipler",
+			"/wp-content/",
+			"http://bdh.zen.ninja/wp-content/uploads/2016/01/",
+			"[Total]",
+			"prizes",
+			"src=\"http://www.barndoorshardware.com/",
+			"write a little",
+			"15px",
+			"120",
+			"Phase:",
+			"judgedBy",
+			"editentry",
+			"watch",
+			"parseFloat(",
+			"$scope.lap.",
+			"text",
+			"item.",
+			"item.size",
+			"item.multiplier",
+			"item.SAC",
+			"item.SACGroup"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"src=\"/",
+			");\n",
+			"div"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 6058,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"submit",
+				"/D/Cloud/Work/MoneySnap/Firebase Version/views/submit.html"
+			],
+			[
+				"profile",
+				"/D/Cloud/Work/MoneySnap/Firebase Version/views/profile.html"
+			],
+			[
+				"photo",
+				"/D/Cloud/Work/MoneySnap/Firebase Version/views/photo.html"
+			],
+			[
+				"states",
+				"/D/Cloud/Work/MoneySnap/Firebase Version/js/states.js"
+			],
+			[
+				"likes",
+				"/D/Cloud/Work/MoneySnap/Firebase Version/views/likes.html"
+			],
+			[
+				"app.cs",
+				"/D/Cloud/Work/MoneySnap/Firebase Version/css/app.css"
+			],
+			[
+				"app",
+				"/D/Cloud/Work/MoneySnap/Firebase Version/js/app.js"
+			],
+			[
+				"notifications",
+				"/D/Cloud/Work/MoneyShot/Interface/views/notifications.html"
+			],
+			[
+				"noti",
+				"/D/Cloud/Work/MoneyShot/Interface/views/notifications.html"
+			],
+			[
+				"pro",
+				"/D/Cloud/Work/MoneyShot/Interface/directives/profileentry.html"
+			],
+			[
+				"courses",
+				"views/coursesTeaching.html"
+			],
+			[
+				"browse",
+				"views/browseCategory.html"
+			],
+			[
+				"edit-text",
+				"views/edit-text.html"
+			],
+			[
+				"module",
+				"views/moduleedit.html"
+			],
+			[
+				"moduleedit",
+				"views/moduleeditor.html"
+			],
+			[
+				"section",
+				"views/sectionedit.html"
+			],
+			[
+				"directives",
+				"directives.js"
+			],
+			[
+				"edit-tex",
+				"views/edit-text.html"
+			],
+			[
+				"editor",
+				"views/editor.html"
+			],
+			[
+				"moduleeditor",
+				"views/moduleeditor.html"
+			],
+			[
+				"course",
+				"views/courseDashboard.html"
+			],
+			[
+				"teach",
+				"views/coursesTeaching.html"
+			],
+			[
+				"create",
+				"views/createCourse.html"
+			],
+			[
+				"text",
+				"views/edit-text.html"
+			],
+			[
+				"style",
+				"style.css"
+			],
+			[
+				"lessonedit",
+				"views/lessonedit.html"
+			],
+			[
+				"sectioneditor",
+				"views/sectioneditor.html"
+			],
+			[
+				"modulee",
+				"views/moduleedit.html"
+			],
+			[
+				"sectionedit",
+				"views/sectionedit.html"
+			],
+			[
+				"createcourse",
+				"views/createCourse.html"
+			],
+			[
+				"scripts",
+				"scripts.js"
+			],
+			[
+				"push",
+				"views/pushCourse.html"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"nested",
+				"views/nestedBlockContent.html"
+			],
+			[
+				"goal",
+				"views/goalTemplate.html"
+			],
+			[
+				"viewhabit",
+				"views/habitProfileDisplay.html"
+			],
+			[
+				"report",
+				"views/habitReport.html"
+			],
+			[
+				"editcourse",
+				"views/editCourse.html"
+			],
+			[
+				"coursegrid",
+				"views/courseGridItem.html"
+			],
+			[
+				"view",
+				"views/viewCourse.html"
+			],
+			[
+				"quiz",
+				"views/quizTemplate.html"
+			],
+			[
+				"question",
+				"views/questionTemplate.html"
+			],
+			[
+				"habit",
+				"views/habitProfileDisplay.html"
+			],
+			[
+				"audio",
+				"views/audioTemplate.html"
+			],
+			[
+				"video",
+				"views/videoTemplate.html"
+			],
+			[
+				"videotemp",
+				"views/videoTemplate.html"
+			],
+			[
+				"videotempl",
+				"views/videoTemplate.html"
+			],
+			[
+				"editcour",
+				"views/editCourse.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/Users/Jordan/Happiness.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 212.0,
+	"status_bar_visible": true
+}

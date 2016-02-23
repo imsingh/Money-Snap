@@ -1,0 +1,15 @@
+<div class="panel">
+	<b class="panelTitle">Votes</b>
+
+	<span ng-repeat="vote in votes | filter:{entryID:entry.$id} | unique:'userID'">
+		<div class="notification read clickable" ng-repeat="user in users | filter:{userID:vote.userID}" ng-click="go('profile.userID', {userID:user.userID})">
+		  <div class="notificationImage">
+		    <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_scale,h_40,w_40/{{user.imageID || 'noProfile_njhxg2.jpg'}}">
+		  </div>
+		  <div class="notificationDetails">
+		  	{{user.name}}
+		  </div>
+		</div>
+	</span>
+
+</div>

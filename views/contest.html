@@ -1,0 +1,233 @@
+<div class="singleContentWrapper" ng-init="setContestPhase(contest)">
+
+  <div class="panel">
+    <div class="singleContestImage">
+      <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_fill,w_900,h_400/{{contest.imageID || 'no-image-featured-image_rdviix'}}.jpg">
+      <div class="singleContestDetails">
+        {{contest.title}}
+      </div>
+    </div>
+
+    <div class="singleContestButtons" ng-if="!contest.votingOver">
+      <div ng-if="submissions < contest.entriesPerPerson && !contest.submissionsOver">
+        <a href="#submit/{{contest.$id}}" class="button success large expanded">Submit a Photo</a>
+      </div>
+      <div ng-if="contest.expired">
+        <p align="center">This contest is over!</p>
+      </div>
+      <a ng-click="smoothScroll('#allEntries')" class="button expanded large" ng-if="(contest.submissionsOver || contest.contestType != 'Contest Members Only') && !contest.votingOver && totalSubmissions > 0 && votesLeft > 0">
+        Vote
+      </a>
+      <a class="button secondary expanded" href="#invite/{{contest.$id}}"><i class="fa fa-envelope-o"></i> Invite</a>
+    </div>
+    <a class="button tiny secondary expanded" href="#edit/{{contest.$id}}" ng-if="contest.userID == currentUser.userID || currentUser.email == 'jordashtalon@gmail.com'">Edit</a>
+  </div>
+
+    <div class="panel" ng-if="contest.description">
+      <b class="contestSectionHead">Description</b>
+      {{contest.description}}
+    </div>
+
+    <div class="panel phase" ng-show="submissionPhase">
+      <b class="phaseTitle">Accepting New Submissions For</b>
+      <div id="submissionDeadlineCounter" class="countdownTimer"></div>
+    </div>
+
+    <div class="panel phase votingPhase" ng-show="votingPhase">
+      <b class="phaseTitle">Vote for your favorite entry!<br><small>Before the time runs out!</small></b>
+      <div id="votingDeadlineCounter" class="countdownTimer"></div>
+      <div class="text-center"><small>No new submissions are being accepted</small></div>
+
+      <div ng-if="!userVotedInContest && totalSubmissions > 0" class="warningMessage text-center">
+          <b>WARNING</b><br> You have not voted yet! Your submission will not be valid until you have voted on at least 1 entry which is not your own.
+      </div>
+    </div>
+
+    <div class="panel phase contestOver" ng-show="contest.votingOver">
+      <b class="phaseTitle">This Contest is Over!<br><small>Here are the winners</small></b>
+
+      <p align="center" ng-show="contest.contestType == 'Specific Judge' && !contest.hasWinners">
+        The judge is currently reviewing all entries and will select a winner shortly
+      </p>
+
+      <!-- POT WINNERS -->
+      <div class="winners" ng-show="contest.contestType == 'Contest Members Only'">
+        <div class="winner" ng-repeat="entry in entries | orderBy:'-numVotes' | filter:{contestID:contest.$id} | limitTo:3 track by $index">
+          <div class="rank">
+            <b class="place"><small>#</small> {{$index+1}}</b>
+          </div>
+          <div class="entrySubmission clickable" ng-click="go('photo.entryID', {entryID:entry.$id})">
+            <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_fill,w_200,h_150/{{entry.imageID}}.jpg">
+          </div>
+          <div class="submittedBy">
+            <div class="submittedByContent">
+              <b>Submitted By:</b><br>
+              <span ng-repeat="user in users | filter:{userID:entry.userID}">
+                <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_scale,h_118,w_118/{{user.imageID || 'noProfile_njhxg2.jpg'}}"><br>
+                {{user.name}}
+              </span>
+            </div>
+          </div>
+          <!-- TODO: Only If Admin -->
+          <div class="sendPayment">
+            <span ng-if="$index == 0">
+              <span ng-init="entry.amount = contest.potSize * 0.65"></span>
+            </span>
+            <span ng-if="$index == 1">
+              <span ng-init="entry.amount = contest.potSize * 0.15"></span>
+            </span>
+            <span ng-if="$index == 2">
+              <span ng-init="entry.amount = contest.potSize * 0.10"></span>
+            </span>
+            <span ng-repeat="prize in prizes | filter:({paidUser:entry.userID,paidEntry:entry.$id})">
+              <span ng-init="entry.wonPrize = true"></span>
+            </span>
+            <div ng-show="!entry.wonPrize">
+              <a ng-click="awardPotPayment(entry.userID, entry.amount, entry)" class="button tiny success" ng-show="!entry.wonPrize">Pay Winner</a>
+            </div>
+            <div ng-show="entry.wonPrize">
+              Paid
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END POT WINNERS -->
+
+    </div>
+
+  <!-- JUDGEMENT WINNERS  -->
+  <div class="panel" ng-show="contest.hasWinners && contest.contestType != 'Contest Members Only'">
+    <b>WINNERS</b>
+
+    <div class="prize" ng-repeat="prize in prizes | filter:{contestID:contest.$id, paidUser:''} track by $index">
+      <span ng-repeat="entry in entries | filter:{$id:prize.paidEntry}">
+        <span ng-repeat="user in users | filter:{userID:prize.paidUser}">
+
+          <div ng-init="setHasWinners(contest)" class="prizeWinner">
+            <div class="prizeWinnerImage clickable" ng-click="go('photo.entryID', {entryID:entry.$id})">
+              <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_fill,w_150,h_100/{{entry.imageID || 'no-image-featured-image_rdviix'}}.jpg">
+            </div>
+            <div class="prizeWinnerAmount">
+              <b>{{prize.amount | currency}} <small>{{prize.label}}</small></b>
+              <div class="prizeWinnerInfo">
+                <div class="prizeWinnerProfile clickable" ng-click="go('profile.userID', {userID:user.userID})">
+                  <div>
+                    <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_thumb,g_custom:face,h_120,w_120/{{user.imageID || 'noProfile_njhxg2'}}.jpg" class="judgeImagePreview">
+                  </div>
+                  <div>
+                    {{user.name}}
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </span>
+      </span>
+    </div>
+
+  </div>
+
+  <div class="panel">
+    <div ng-if="contest.contestType != 'Contest Members Only'" class="prizes">
+      <b class="contestSectionHead"><i class="fa fa-trophy"></i> Prizes</b>
+      <div class="prize" ng-class="{'mainPrize':$first}" ng-repeat="prize in prizes | filter:{contestID:contest.$id} track by $index">
+        <b>{{prize.amount | currency}} <small>{{prize.label}}</small></b>
+      </div>
+    </div>
+
+    <div ng-if="contest.contestType == 'Contest Members Only'" class="prizes">
+      <b class="contestSectionHead">Pot Size</b><br>
+      <div class="profileStat moneyWon" style="text-align: left;">
+        <b>{{contest.potSize * 0.90 || 0 | currency}}</b>
+        <small>current pot size</small>
+      </div>
+
+      <br><br>
+
+      <b class="contestSectionHead"><i class="fa fa-trophy"></i> Prize Breakdown</b>
+      <small>The more people to join the contest, the bigger the prizes!</small>
+      <div class="prize mainPrize">
+        <b>{{contest.potSize * 0.65 | currency}} <small>1st Place</small></b>
+      </div>
+      <div class="prize">
+        <b>{{contest.potSize * 0.15 | currency}} <small>2nd Place</small></b>
+      </div>
+      <div class="prize">
+        <b>{{contest.potSize * 0.10 | currency}} <small>3rd Place</small></b>
+      </div>
+
+    </div>
+  </div>
+
+<div ng-if="contest.contestType == 'Specific Judge'">
+  <div class="panel prizes">
+    <b class="contestSectionHead">About The Judge</b>
+    <div class="judgeInfo">
+      <div class="judgePhoto">
+        <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_thumb,g_custom:face,h_120,w_120/{{contest.judgeImageID}}.jpg" class="judgeImagePreview">
+      </div>
+      <div class="judgeDetails">
+        <b class="judgeName">{{contest.judgeName}}</b>
+        {{contest.judgeDescription}}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div ng-if="contest.contestType == 'Contest Members Only'" class="panel">
+  <b class="contestSectionHead">Group Vote</b>
+  <p>In Group Vote mode the more people who join the contest the more you can win!</p>
+  <b>NOTES</b>
+  <ul>
+    <li>For your submissions to be valid you must vote on at least on entry that is not your own</li>
+    <li>Entrance Fee: <b>{{contest.entranceFee | currency}}</b></li>
+  </ul>
+</div>
+
+  <div class="panel prizes">
+    <b class="contestSectionHead">Rules</b>
+    <div class="mainPrize prize">
+      <b>{{contest.entriesPerPerson || 1}} <small>entries per person</small></b>
+    </div>
+    <div class="prize">
+      <b>{{contest.votesPerPerson}} <small>votes per person</small></b>
+    </div>
+    <div class="prize">
+      <b>{{contest.submissionDeadline}} <small>Submission Deadline</small></b>
+    </div>
+    <div class="prize">
+      <b>{{contest.votingDeadline}} <small>Voting Deadline</small></b>
+    </div>
+  </div>
+
+  <div class="panel entries">
+    <b class="contestSectionHead"><i class="fa fa-trophy"></i> My Submissions <small style="float: right">{{submissions}} / {{contest.entriesPerPerson}}</small></b>
+      <div class="contestEntries">
+        <profileentry class="entry" ng-repeat="entry in entries | orderBy:'-numVotes' | filter:{userID:firebaseUser.uid, contestID:contest.$id} track by $index">
+        </profileentry>
+      </div>
+  </div>
+
+  <div class="panel entries bottomPanel" ng-show="hasVotes">
+    <b class="contestSectionHead"><i class="fa fa-heart"></i> My Votes  <small style="float: right">{{totalUserVotes}} / {{contest.votesPerPerson}}</small></b>
+      <div class="contestEntries">
+        <div class="voteGroup" ng-repeat="vote in votes | filter:{contestID:contest.$id, userID:firebaseUser.uid} track by $index">
+          <profileentry ng-repeat="entry in entries | filter:{$id:vote.entryID} track by $index" ng-show="entry.imageID" ng-init="setHasVotes()">
+          </profileentry>
+        </div>
+      </div>
+  </div>
+
+  <div class="panel entries" id="allEntries">
+    <b class="contestSectionHead"><i class="fa fa-camera-retro"></i> All Entries <small style="float: right;">{{contest.numEntries}}</small></b>
+    
+    <div class="contestEntries">
+      <profileentry class="entry" ng-repeat="entry in entries | orderBy:'-numVotes' | filter:{contestID:contest.$id} track by $index" ng-init="setRank(entry.$id, $index+1)"></profileentry>
+    </div>
+
+  </div>
+
+</div>

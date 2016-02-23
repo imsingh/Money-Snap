@@ -1,0 +1,68 @@
+<div class="panel" ng-init="setProfile()">
+  <b class="profileName">{{user.name}}</b>
+
+  <div class="profileTop">
+    <div class="profilePhoto">
+      <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_scale,h_118,w_118/{{user.imageID || 'noProfile_njhxg2.jpg'}}">
+      <div ng-if="user.userID == currentUser.userID" class="dropzoneClickHelper text-center">
+        <a class="button profileDropzoneButton tiny" profileimage>Change</a>
+        <div id="preview-template" style="display: none;"></div>
+      </div>
+    </div>
+    <div class="profileStats">
+      <div class="profileStat submissions">
+        <b>{{user.totalSubmissions || 0}}</b>
+        <small>submissions</small>
+      </div>
+      <div class="profileStat followers clickable" ng-click="go('followers.userID', {userID:user.userID})">
+        <b>{{followers || 0}}</b>
+        <small>followers</small>
+      </div>
+      <div class="profileStat following clickable" ng-click="go('following.userID', {userID:user.userID})">
+        <b>{{numFollowing || 0}}</b>
+        <small>following</small>
+      </div>
+      <div class="profileStat contestsWon clickable" ng-click="go('contestsWon.userID', {userID:user.userID})">
+        <b>{{totalContestsWon || 0}}</b>
+        <small>contests won</small>
+      </div>
+      <div class="profileStat moneyWon">
+        <b>{{totalMoneyEarned || 0 | currency}}</b>
+        <small>money won</small>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="panel">
+  <div class="followCTA" ng-if="!following">
+    <a class="button expanded secondary" ng-click="follow()">Follow</a>
+  </div>
+  <div class="followCTA" ng-if="following">
+    <a class="button expanded" ng-click="unfollow()">Following</a>
+  </div>
+</div>
+
+<div class="panel" ng-if="user.description || user.userID == currentUser.userID">
+    <div ng-show="user.userID != currentUser.userID">
+      {{user.description}}
+    </div>
+    <div ng-show="user.userID == currentUser.userID">
+      {{user.description || 'Write a little about yourself'}}
+      <a ng-click="edit=true">edit</a>
+      <div ng-show="edit">
+        <textarea ng-model="user.description" ng-change="saveUser()"></textarea>
+        <a class="success tiny button" ng-click="edit=false">Done</a>
+      </div>
+    </div>
+</div>
+
+<div class="panel">
+  <div class="entries activeEntries">
+    <b>SUBMISSIONS</b>
+    <div class="profileEntries">
+      <profileentry ng-repeat="entry in entries | orderBy:'-' | filter:{userID:user.userID} track by $index"></profileentry>
+    </div>
+  </div>
+</div>
