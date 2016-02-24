@@ -46,15 +46,12 @@ app.directive('contestimage', function() {
 		restrict: 'A',
 		link: function(scope, element, attrs) {
 
-			// $('.dropzone').dropzone({ 
-			// 	url: "/file/post",
-			// 	dictDefaultMessage: '<i class="fa fa-cloud-upload"></i> Upload'
-			// });
 
 			Dropzone.autoDiscover = false;
 			var myDropzone = new Dropzone(".imageDropzone", {
 				url: 'https://api.cloudinary.com/v1_1/dsgmrzsui/image/upload',
-				dictDefaultMessage: '<i class="fa fa-cloud-upload"></i> Upload'
+				dictDefaultMessage: '<i class="fa fa-cloud-upload"></i> Upload',
+				maxFiles: 1
 			});
 			myDropzone.on('sending', function (file, xhr, formData) {
 				formData.append('api_key', 796794492527728);
@@ -79,7 +76,8 @@ app.directive('judgeimage', function() {
 			Dropzone.autoDiscover = false;
 			var myDropzone = new Dropzone(".judgeDropzone", {
 				url: 'https://api.cloudinary.com/v1_1/dsgmrzsui/image/upload',
-				dictDefaultMessage: '<i class="fa fa-cloud-upload"></i> Upload'
+				dictDefaultMessage: '<i class="fa fa-cloud-upload"></i> Upload',
+				maxFiles: 1
 			});
 			myDropzone.on('sending', function (file, xhr, formData) {
 				formData.append('api_key', 796794492527728);
@@ -133,7 +131,8 @@ app.directive('photoentry', function() {
 			Dropzone.autoDiscover = false;
 			var myDropzone = new Dropzone(".photoEntry", {
 				url: 'https://api.cloudinary.com/v1_1/dsgmrzsui/image/upload',
-				dictDefaultMessage: '<i class="fa fa-cloud-upload"></i> Upload'
+				dictDefaultMessage: '<i class="fa fa-cloud-upload"></i> Upload',
+				maxFiles: 1
 			});
 			myDropzone.on('sending', function (file, xhr, formData) {
 				formData.append('api_key', 796794492527728);

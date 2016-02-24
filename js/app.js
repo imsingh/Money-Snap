@@ -343,7 +343,7 @@ app.controller('main', function($scope, $firebaseArray, $firebaseObject, $fireba
 		  	$scope.loginError = error.message;
 		  	$scope.$apply();
 		  } else {
-		  	$state.go('profile.userID', {userID:authData.uid});
+		  	$state.go('/');
 		  }
 		});
 	}
