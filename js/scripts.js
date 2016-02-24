@@ -27,19 +27,6 @@ app.directive('sidepanes', function() {
 	};
 });
 
-app.directive('forms', function() {
-	return {
-		restrict: 'A',
-		link: function(scope, element, attrs) {
-			setTimeout(function(){
-				$(function() {
-				    FastClick.attach(document.body);
-				});
-			 }, 0);
-		}  // end jQuery
-	};
-});
-
 app.directive('grid', function() {
 	return {
 		restrict: 'A',
