@@ -708,19 +708,19 @@ app.controller('main', function($scope, $firebaseArray, $firebaseObject, $fireba
 		$('.'+createdPrizeID).find('.prizeLabel').focus();
 		$('.'+createdPrizeID).find('.prizeLabel').effect('highlight', {}, 1000);
 	}
-	$scope.submitEntry = function(entry) {
-		entry.contestID = $state.params.contestID;
-		entry.userID = $scope.firebaseUser.uid;
-		entry.numLikes = 0;
-		entry.numVotes = 0;
-		entry.date = new Date();
-		var createdEntry = firebase.child('Entries').push(entry);
+	$scope.entry = {};
+	$scope.submitEntry = function() {
+		$scope.entry.contestID = $state.params.contestID;
+		$scope.entry.userID = $scope.firebaseUser.uid;
+		$scope.entry.numLikes = 0;
+		$scope.entry.numVotes = 0;
+		$scope.entry.date = new Date();
+		var createdEntry = firebase.child('Entries').push($scope.entry);
 		var createdEntryID = $firebaseObject(createdEntry).$id;
 
 		// Deduct entrance fee from users balance
-		console.log($scope.contest.entranceFee);
 		$scope.usersRef.once('value', function(users){users.forEach(function(user) {
-			if(user.val().userID == entry.userID) {
+			if(user.val().userID == $scope.entry.userID) {
 				var totalCredits = 0;
 				if(user.val().credits) {
 					totalCredits = parseFloat(user.val().credits) - parseFloat($scope.contest.entranceFee);
@@ -733,26 +733,27 @@ app.controller('main', function($scope, $firebaseArray, $firebaseObject, $fireba
 			}
 		})});
 
+		// Notify the contest creator that someone has submitted an entry to their contest
+		$scope.notificationsRef.push({
+			sourceUser:$scope.firebaseUser.uid,
+			targetUser:$scope.contest.userID,
+			entryID: createdEntryID,
+			contestID: $scope.entry.contestID,
+			action:'Entered'
+		});
+
 		// Add money to the contest pot
 		$scope.contestsRef.once('value', function(contests){contests.forEach(function(contest) {
-			if(contest.key() == entry.contestID) {
+			if(contest.key() == $scope.entry.contestID) {
+				console.log(contest.val().entranceFee, 'Updating Contest');
 				var potSize = 0;
 				if(contest.val().potSize) {
-					potSize = contest.val().potSize + contest.entranceFee;
+					potSize = contest.val().potSize + contest.val().entranceFee;
 				} else {
-					potSize += contest.entranceFee;
+					potSize += contest.val().entranceFee;
 				}
 				$scope.contestsRef.child(contest.key()).update({
 					potSize: potSize
-				});
-
-				// Notify the contest creator that someone has submitted an entry to their contest
-				$scope.notificationsRef.push({
-					sourceUser:$scope.firebaseUser.uid,
-					targetUser:$scope.contest.userID,
-					entryID: createdEntryID,
-					contestID: entry.contestID,
-					action:'Entered'
 				});
 			}
 		})});

@@ -13,10 +13,12 @@
 					{{user.name}}
 				</div>
 				<div class="userPreviewInvite">
-					<span ng-repeat="notification in notifications | filter:{contestID:contest.$id, targetUser:user.userID} | unique:'targetUser'">
-						<i class="fa fa-check"></i> Invited 
+					<span ng-repeat="notification in notifications | filter:{contestID:contest.$id, targetUser:user.userID} | unique:'targetUser'" ng-init="$parent.invited = true">
+						<i class="fa fa-check" ng-init="$parent.userInvited = true"></i> Invited 
 					</span>
+					<span ng-if="!invited">
 						<a class="button success" ng-click="invite(user.userID, contest.$id)">Invite</a>
+					</span>
 				</div>
 			</div>
 		</div>

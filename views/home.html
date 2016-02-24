@@ -13,13 +13,13 @@
 
 	<b class="filterTitle">{{currentUser.contestFilterLabel}}</b>
 	<div class="contestReports" ng-repeat="contest in contests | orderBy:'-' | filter:currentUser.contestFilter" ng-if="currentUser.contestFilterLabel != 'Participating' && contest.title">
-		<contestreport></contestreport>
+		<contestreport ng-if="contest.title && contest.imageID"></contestreport>
 	</div>
 
 	<!-- PARTICIPATING FILTER  -->
 	<span ng-repeat="entry in entries  | orderBy:'-' | filter:{userID:currentUser.userID} | unique:'contestID'"  ng-if="currentUser.contestFilterLabel == 'Participating'">
 		<div class="contestReports" ng-repeat="contest in contests | filter:{$id:entry.contestID}" ng-if="contest.title">
-			<contestreport></contestreport>
+			<contestreport ng-if="contest.title && contest.imageID"></contestreport>
 		</div>
 	</span>
 	

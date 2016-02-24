@@ -174,7 +174,6 @@ app.directive('datepicker', function() {
 
 app.directive('stripe', ['$log', function($log) {
   return function(scope, elem, attrs) {
-  			console.log('x');
   			var form =  document.createElement("form");;
   			form.action = "http://zen.ninja/stripemoney/charge.php";
   			form.method = "POST";
