@@ -1,0 +1,26 @@
+<div class="panel">
+	<b class="panelTitle">Contests <span class="refreshIcon"><a ng-click="refresh();"><i class="fa fa-refresh"></i></a></span></b>
+
+	<div class="filterLinks">
+		<a ng-click="setContestFilter({}, 'All')"  ng-class="{'activeFilter':currentUser.contestFilterLabel == 'All'}">All</a>
+		<a ng-click="setContestFilter({featured:true}, 'Featured');" ng-class="{'activeFilter':currentUser.contestFilterLabel == 'Featured'}">Featured</a>
+		<a ng-click="setContestFilter({userID:currentUser.userID}, 'Participating');" ng-class="{'activeFilter':currentUser.contestFilterLabel == 'Participating'}">Participating</a>
+		<a ng-click="setContestFilter({submissionsOver:false, votingOver:false}, 'Accepting Submissions');" ng-class="{'activeFilter':currentUser.contestFilterLabel == 'Accepting Submissions'}">Active</a>
+		<a ng-click="setContestFilter({submissionsOver:true, votingOver: false}, 'Voting');" ng-class="{'activeFilter':currentUser.contestFilterLabel == 'Voting'}">Voting</a>
+		<a ng-click="setContestFilter({submissionsOver:true, votingOver: true}, 'Finished');" ng-class="{'activeFilter':currentUser.contestFilterLabel == 'Finished'}">Finished</a>
+		<a ng-click="setContestFilter({userID:currentUser.userID}, 'My Contests');" ng-class="{'activeFilter':currentUser.contestFilterLabel == 'My Contests'}">My Contests</a>
+	</div>
+
+	<b class="filterTitle">{{currentUser.contestFilterLabel}}</b>
+	<div class="contestReports" ng-repeat="contest in contests | orderBy:'-' | filter:currentUser.contestFilter" ng-if="currentUser.contestFilterLabel != 'Participating' && contest.title">
+		<contestreport ng-if="contest.title && contest.imageID"></contestreport>
+	</div>
+
+	<!-- PARTICIPATING FILTER  -->
+	<span ng-repeat="entry in entries  | orderBy:'-' | filter:{userID:currentUser.userID} | unique:'contestID'"  ng-if="currentUser.contestFilterLabel == 'Participating'">
+		<div class="contestReports" ng-repeat="contest in contests | filter:{$id:entry.contestID}" ng-if="contest.title">
+			<contestreport ng-if="contest.title && contest.imageID"></contestreport>
+		</div>
+	</span>
+	
+</div>

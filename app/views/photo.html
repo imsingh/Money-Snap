@@ -1,0 +1,76 @@
+
+
+  <div class="panel">
+    <div class="singleContestImage">
+      <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_scale,w_1000/{{entry.imageID || 'no-image-featured-image_rdviix'}}.jpg">
+    </div>
+    <div class="description">
+      {{entry.caption}}
+      <a href="#edit-entry/{{entry.$id}}" ng-if="entry.userID == firebaseUser.uid" class="smallLink rightLink">edit photo</a>
+    </div>
+  </div>
+
+    <div class="panel">
+      <a class="likeButton" ng-click="like(entry)" ng-if="!userLikes"><i class="fa fa-thumbs-o-up"></i> Like</a>
+      <a class="likeButton liked" ng-click="unlike(entry)" ng-if="userLikes"><i class="fa fa-thumbs-o-up"></i> Liked</a>
+
+      <div class="photoStats">
+        <div class="numLikes clickable" ng-click="go('likes.entryID', {entryID:entry.$id})"><b><i class="fa fa-thumbs-o-up"></i> {{entry.numLikes || 0}}</b> <small>likes</small></div>
+        <div class="numVotes clickable" ng-click="go('votes.entryID', {entryID:entry.$id})"><b><i class="fa fa-heart"></i> {{entry.numVotes || 0}}</b> <small>votes</small></div>
+        <div class="rank" ng-show="entry.rank && entry.rank <= totalEntries"><b><i class="fa fa-line-chart"></i> #{{entry.rank}}</b> <small>/ {{totalEntries || 1}}</small></div>
+      </div>
+    </div>
+
+  <!-- USER DETAILS -->
+  <div class="panel entryUser clickable" ng-repeat="user in users | filter:{userID:entry.userID}" ng-click="go('profile.userID', {userID:user.userID})" ng-if="contest.votingOver">
+      <b class="panelTitle">Submitted By</b>
+      <div class="entryUserSheet">
+        <div class="entryUserSheetImage">
+          <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_scale,h_118,w_118/{{user.imageID || 'noProfile_njhxg2.jpg'}}">
+        </div>
+        <div class="entryUserSheetName">
+          {{user.name}}
+        </div>
+      </div>
+  </div>
+
+  <!-- AWARD PRIZES TODO: ADMIN ONLY -->
+  <div class="panel awardPrizes" ng-if="contest.votingOver && currentUser.email=='jordashtalon@gmail.com'">
+    <b class="panelTitle">Award Prizes <small>(admin only)</small></b>
+    <div class="prizes">
+      <div class="prize" ng-repeat="prize in prizes | filter:{contestID:entry.contestID}">
+        <b>{{prize.label}}</b> {{prize.amount | currency  }} &middot; 
+        <span ng-if="!prize.paidUser"><a ng-click="awardPayment(entry.userID, prize, entry)" class="button tiny success">Award <small>This Photo</small></a></span>
+        <span ng-if="prize.paidUser">Prize Paid Out To: <span ng-repeat="user in users | filter:{userID:prize.paidUser}"><a href="#profile/{{user.userID}}">{{user.name}}</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- IF ENTRY WON A PRIZE -->
+  <span ng-repeat="prize in prizes | filter:{paidEntry:entry.$id}">
+    <div class="panel text-center">
+      <b class="panelTitle">This Entry Won a Prize!</b>
+      
+      <span ng-show="prize.label">
+        <b>{{prize.label}}</b>
+         &middot; 
+      </span>
+      {{prize.amount | currency}}
+    </div>
+  </span>
+
+  <div class="panel competingIn">
+    <b>CONTEST</b>
+    <b class="competingInContest">{{contest.title}}</b>
+    <div ng-if="firebaseUser.uid != entry.userID">
+      <div class="text-center" ng-if="(contest.submissionsOver || contest.contestType != 'Contest Members Only') && !contest.votingOver && !userVote  && totalSubmissions > 0 && votesLeft > 0">
+        <a class="button success large bigBold" ng-click="vote(entry)">VOTE <small>For This</small></a>
+        <div class="text-center">You have {{votesLeft || 0}} <small>/ {{contest.votesPerPerson}}</small> vote(s) remaining in this contest</div>
+      </div>
+      <div class="text-center userVoted" ng-if="userVote"><i class="fa fa-check"></i> You voted for this entry <small><a ng-click="unvote(entry)" ng-if="!contest.votingOver">Remove Vote</a></small></div>
+    </div>
+    <div ng-if="firebaseUser.uid == entry.userID">
+      Thank you for your entry!
+    </div>
+    <a href="#contest/{{entry.contestID}}" class="button large">See All Entries</a>
+  </div>

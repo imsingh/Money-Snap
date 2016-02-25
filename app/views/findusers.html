@@ -1,0 +1,14 @@
+<div class="panel">
+	<b class="panelHead">User Search</b>
+	<div class="userPreviews">
+		<input type="text" ng-model="filter" placeholder="search">
+		<div class="userPreview" ng-click="go('profile.userID', {userID:user.userID})" ng-repeat="user in users | orderBy:'-' | filter:filter">
+			<div class="userPreviewImage">
+				<img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_scale,h_118,w_118/{{user.imageID || 'noProfile_njhxg2.jpg'}}">
+			</div>
+			<div class="userPreviewName">
+				{{user.name}}
+			</div>
+		</div>
+	</div>
+</div>

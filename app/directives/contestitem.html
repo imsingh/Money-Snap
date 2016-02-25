@@ -1,0 +1,22 @@
+<a href="#contest/{{contest.$id}}" class="contestPreviewLink">
+  <div class="contestPreview">
+    <img src="http://res.cloudinary.com/dsgmrzsui/image/upload/c_fill,h_300,w_600/{{contest.imageID || 'no-image-featured-image_rdviix'}}.jpg" class="contestPreviewImage">
+    <div class="contestPreviewDetails">
+      <div class="contestPreviewTitle">
+        {{contest.title}}
+      </div>
+      <div class="contestPreviewAward" ng-repeat="prize in prizes | filter:{contestID:contest.$id} | limitTo: 1">
+        <b><i class="fa fa-trophy"></i> {{prize.amount | currency}}</b> <small>{{prize.label}}</small>
+      </div>
+      <div class="contestPreviewAward" ng-if="contest.contestType == 'Contest Members Only'">
+        <b><i class="fa fa-trophy"></i> <b>{{contest.potSize * 0.90 || 0 | currency}}</b></b>
+      </div>
+      <div class="judgedBy" ng-if="contest.contestType == 'Specific Judge'">
+        <small>JUDGE</small> <b>{{contest.judgeName}}</b>
+      </div>
+      <div class="judgedBy" ng-if="contest.contestType == 'Contest Members Only'">
+        <small>JUDGED BY CONTEST PARTICIPANTS</small>
+      </div>
+    </div>
+  </div>
+</a>
