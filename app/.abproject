@@ -2,7 +2,7 @@
 	"ProjectName": "app",
 	"ProjectGuid": "{5ee86683-cdab-4ed7-8387-f2d43a274ea6}",
 	"projectVersion": 1,
-	"AppIdentifier": "com.telerik.app",
+	"AppIdentifier": "com.moneysnap.app",
 	"DisplayName": "app",
 	"Author": "",
 	"Description": "app",

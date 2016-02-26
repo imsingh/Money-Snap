@@ -1,3 +1,4 @@
+var app = angular.module('moneysnap');
 app.directive('contestitem', function() {
     return {
         restrict: 'E',

@@ -1,3 +1,5 @@
+var app = angular.module('moneysnap');
+
 app.directive('sidepanes', function() {
 	return {
 		restrict: 'A',

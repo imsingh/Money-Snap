@@ -1,9 +1,39 @@
 $(document).foundation();
 
-var app = angular.module('moneysnap', ['ui.router', 'firebase', 'ngAnimate', 'ngSanitize']);
+var app = angular.module('moneysnap', ['ui.router', 'firebase', 'ngAnimate', 'ngSanitize', 'service.push']);
 var firebaseURL = 'https://moneysnap.firebaseio.com/';
 
-app.controller('main', function($scope, $firebaseArray, $firebaseObject, $firebaseAuth, $state, $timeout, $window) {
+// Adding Push Notification to App
+app.run(function($cordovaPushwoosh) {
+  document.addEventListener('deviceready', function () {
+    console.log("App.run is Called");
+    $cordovaPushwoosh.initPushwoosh().then(function(status){
+    	console.log("Device is registered!");
+    });
+
+    document.addEventListener('push-notification', function(event) {
+      alert("Push Notification Received");
+    });
+
+  });
+})
+
+app.controller('main', function($scope, $firebaseArray, $firebaseObject, $firebaseAuth, $state, $timeout, $window,$cordovaPushwoosh) {
+	// Debug Coding
+	console.log("Main Running");
+	function onDeviceReady() {
+		console.log("Device Ready is Called");
+	    $cordovaPushwoosh.initPushwoosh().then(function(status){
+	    	console.log("Device is registered!");
+	    });
+
+	    document.addEventListener('push-notification', function(event) {
+	      alert("Push Notification Received");
+	    });
+	}
+
+	document.addEventListener("deviceready", onDeviceReady, false);
+	    
 
 	var firebase = new Firebase(firebaseURL);
 	$scope.test = 'Angular is active';

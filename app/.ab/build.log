@@ -1,0 +1,16 @@
+Project "app.tmp.proj" (default targets):
+	Warning: Cannot include the following item(s) in your application: external\Font-Awesome\.gitignore;external\Font-Awesome\.npmignore;external\Font-Awesome\src\assets\less\bootstrap-3.3.5\.csscomb.json;external\Font-Awesome\src\assets\less\bootstrap-3.3.5\.csslintrc. The build system treats items with a leading dot as hidden files or directories and does not process them. If you want to include these items in your application package, rename them and rebuild your app.
+	android Build Tooling revision 2016.02.16.1r
+	Warning: Note: Some input files use or override a deprecated API.
+	Warning: Note: Recompile with -Xlint:deprecation for details.
+	Warning: Note: /home/builder/BpcTooling/Cordova3/Plugins/com.telerik.LiveSync/src/android/LiveSync-Lib/LiveSync-Lib/src/com/telerik/LiveSync/CloudSync.java uses or overrides a deprecated API.
+	Warning: Note: Recompile with -Xlint:deprecation for details.
+	Warning: Note: Some input files use or override a deprecated API.
+	Warning: Note: Recompile with -Xlint:deprecation for details.
+	Warning: Note: /home/builder/BpcTooling/Cordova3/Plugins/com.telerik.LiveSync/src/android/LiveSync-Lib/LiveSync-Lib/src/com/telerik/LiveSync/CloudSync.java uses or overrides a deprecated API.
+	Warning: Note: Recompile with -Xlint:deprecation for details.
+	Warning: Note: Some input files use or override a deprecated API.
+	Warning: Note: Recompile with -Xlint:deprecation for details.
+Note: Some input files use unchecked or unsafe operations.
+	Warning: Note: Recompile with -Xlint:unchecked for details.
+Done building project "app.tmp.proj".
