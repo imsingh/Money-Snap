@@ -6,9 +6,9 @@ var firebaseURL = 'https://moneysnap.firebaseio.com/';
 // Adding Push Notification to App
 app.run(function($cordovaPushwoosh) {
   document.addEventListener('deviceready', function () {
-    console.log("App.run is Called");
     $cordovaPushwoosh.initPushwoosh().then(function(status){
-    	console.log("Device is registered!");
+    	console.log("Device is registered!", status);
+    	localStorage.setItem('deviceToken', status);
     });
 
     document.addEventListener('push-notification', function(event) {
@@ -18,23 +18,8 @@ app.run(function($cordovaPushwoosh) {
   });
 })
 
-app.controller('main', function($scope, $firebaseArray, $firebaseObject, $firebaseAuth, $state, $timeout, $window,$cordovaPushwoosh) {
-	// Debug Coding
-	console.log("Main Running");
-	function onDeviceReady() {
-		console.log("Device Ready is Called");
-	    $cordovaPushwoosh.initPushwoosh().then(function(status){
-	    	console.log("Device is registered!");
-	    });
-
-	    document.addEventListener('push-notification', function(event) {
-	      alert("Push Notification Received");
-	    });
-	}
-
-	document.addEventListener("deviceready", onDeviceReady, false);
-	    
-
+app.controller('main', function($scope, $cordovaPushwoosh, $firebaseArray, $firebaseObject, $firebaseAuth, $state, $timeout, $window,$cordovaPushwoosh) {
+	
 	var firebase = new Firebase(firebaseURL);
 	$scope.test = 'Angular is active';
 
@@ -214,6 +199,15 @@ app.controller('main', function($scope, $firebaseArray, $firebaseObject, $fireba
 			contestID: entry.contestID,
 			action:'Awarded'
 		});
+
+		var pushData = {
+			targetUser: entry.deviceToken,
+			content: $scope.firebaseUser.name + ' is Awarded'
+		};
+
+		$cordovaPushwoosh.sendPush(pushData).then(function() {
+			console.log('Push Notification Sent');
+		});
 	}
 	$scope.awardPotPayment = function(userID, award, entry) {
 		$scope.prizesRef.push({
@@ -228,6 +222,15 @@ app.controller('main', function($scope, $firebaseArray, $firebaseObject, $fireba
 			entryID: entry.$id,
 			contestID: entry.contestID,
 			action:'Awarded'
+		});
+
+		var pushData = {
+			targetUser: entry.deviceToken,
+			content: $scope.firebaseUser.name + ' is Awarded'
+		};
+
+		$cordovaPushwoosh.sendPush(pushData).then(function() {
+			console.log('Push Notification Sent');
 		});
 	}
 
@@ -302,6 +305,7 @@ app.controller('main', function($scope, $firebaseArray, $firebaseObject, $fireba
 
 	$scope.newUser = {};
 	$scope.registerUser = function() {
+		var deviceToken = localStorage.getItem('deviceToken');
 		firebase.createUser({
 		  email    : $scope.newUser.email,
 		  password : $scope.newUser.password
@@ -311,7 +315,8 @@ app.controller('main', function($scope, $firebaseArray, $firebaseObject, $fireba
 		    firebase.child('Users').push({
 		    	name:$scope.newUser.name,
 		    	email: $scope.newUser.email,
-		    	userID: userData.uid
+		    	userID: userData.uid,
+		    	deviceToken: deviceToken
 		    });
 		    $scope.user = $scope.newUser;
 		    $scope.loginUser();
@@ -483,10 +488,22 @@ app.controller('main', function($scope, $firebaseArray, $firebaseObject, $fireba
 			follower:$scope.currentUser.userID,
 			following: $scope.user.userID
 		});
-		$scope.notificationsRef.push({
-			sourceUser:$scope.firebaseUser.uid,
+		
+		var data = {
+			sourceUser:$scope.currentUser.userID,
 			targetUser: $scope.user.userID,
 			action:'Followed'
+		};
+
+		var pushData = {
+			targetUser: $scope.user.deviceToken,
+			content: $scope.currentUser.name + " Followed you" 
+		};
+
+		$scope.notificationsRef.push(data);
+
+		$cordovaPushwoosh.sendPush(pushData).then(function() {
+			console.log('Push Notification Sent');
 		});
 	}
 	$scope.unfollow = function() {
@@ -558,13 +575,33 @@ app.controller('main', function($scope, $firebaseArray, $firebaseObject, $fireba
 			contestID: entry.contestID,
 			action:'Liked'
 		});
+
+		var pushData = {
+			targetUser: $scope.entry.deviceToken,
+			content: $scope.firebaseUser.name + ' Liked an Entry'
+		};
+
+		$cordovaPushwoosh.sendPush(pushData).then(function() {
+			console.log('Push Notification Sent');
+		});
 	}
-	$scope.invite = function(userID, contestID) {
+	$scope.invite = function(userID, deviceToken, contestID) {
+		// Pass the deviceToken of User from Firebase to make it work.
+
 		$scope.notificationsRef.push({
 			sourceUser:$scope.firebaseUser.uid,
 			targetUser: userID,
 			contestID: contestID,
 			action:'Invited'
+		});
+
+		var pushData = {
+			targetUser: deviceToken,
+			content: $scope.firebaseUser.name + ' is Invited'
+		};
+
+		$cordovaPushwoosh.sendPush(pushData).then(function() {
+			console.log('Push Notification Sent');
 		});
 	}
 	$scope.unlike = function(entry) {
@@ -593,6 +630,15 @@ app.controller('main', function($scope, $firebaseArray, $firebaseObject, $fireba
 			entryID: entry.$id,
 			contestID: entry.contestID,
 			action:'Voted'
+		});
+
+		var pushData = {
+			targetUser: $scope.entry.deviceToken,
+			content: $scope.firebaseUser.name + ' Voted'
+		};
+
+		$cordovaPushwoosh.sendPush(pushData).then(function() {
+			console.log('Push Notification Sent');
 		});
 	}
 	$scope.countNotifications = function() {
@@ -770,6 +816,15 @@ app.controller('main', function($scope, $firebaseArray, $firebaseObject, $fireba
 			entryID: createdEntryID,
 			contestID: $scope.entry.contestID,
 			action:'Entered'
+		});
+
+		var pushData = {
+			targetUser: $scope.contest.deviceToken,
+			content: $scope.firebaseUser.name + ' Entered'
+		};
+
+		$cordovaPushwoosh.sendPush(pushData).then(function() {
+			console.log('Push Notification Sent');
 		});
 
 		// Add money to the contest pot
