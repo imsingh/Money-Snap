@@ -8,7 +8,13 @@ app.run(function($cordovaPushwoosh) {
   document.addEventListener('deviceready', function () {
     $cordovaPushwoosh.initPushwoosh().then(function(status){
     	console.log("Device is registered!", status);
-    	localStorage.setItem('deviceToken', status);
+    	var platform = device.platform;
+    	if(platform === 'Android') {
+    		localStorage.setItem('deviceToken', status);
+    	} else if(platform === 'iOS') {
+    		localStorage.setItem('deviceToken', status['deviceToken']);
+    	}
+    	
     });
 
     document.addEventListener('push-notification', function(event) {
